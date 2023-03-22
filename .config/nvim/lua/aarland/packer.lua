@@ -53,4 +53,6 @@ use({
   }
   use('github/copilot.vim')
   use('tpope/vim-commentary')
+  use('p00f/nvim-ts-rainbow')
+  use('simrat39/inlay-hints.nvim')
 end)
