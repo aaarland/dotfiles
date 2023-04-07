@@ -1,9 +1,9 @@
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit!<CR>")
-vim.keymap.set("n", "<leader>gdh", function()
+vim.keymap.set("n", "<leader>gh", function()
     vim.cmd.diffget({'//2'})
 end)
-vim.keymap.set("n", "<leader>gdl", function()
+vim.keymap.set("n", "<leader>gl", function()
     vim.cmd.diffget({'//3'})
 end)
 
