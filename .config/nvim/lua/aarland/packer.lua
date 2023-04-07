@@ -65,9 +65,6 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
-
-  use("folke/zen-mode.nvim")
-  -- use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("tpope/vim-commentary")
   use("f-person/git-blame.nvim")
@@ -76,4 +73,7 @@ return require('packer').startup(function(use)
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use("jose-elias-alvarez/null-ls.nvim")
+  use('github/copilot.vim')
+  use('tpope/vim-commentary')
+
 end)
