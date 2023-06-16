@@ -21,6 +21,13 @@ return require('packer').startup(function(use)
 		  vim.cmd('colorscheme rose-pine')
 	  end
   })
+  use({
+      'Alexis12119/nightly.nvim',
+      as = 'nightly',
+      config = function()
+          vim.cmd('colorscheme nightly')
+      end
+  })
 
   use({
       "folke/trouble.nvim",
@@ -74,6 +81,5 @@ return require('packer').startup(function(use)
   }
   use("jose-elias-alvarez/null-ls.nvim")
   use('github/copilot.vim')
-  use('tpope/vim-commentary')
 
 end)
