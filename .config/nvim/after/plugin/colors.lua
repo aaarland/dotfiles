@@ -15,4 +15,4 @@ function ColorMyPencils(color)
 
 end
 
-ColorMyPencils("nightly")
+ColorMyPencils("rose-pine")
