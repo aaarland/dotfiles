@@ -35,6 +35,7 @@ autocmd('LspAttach', {
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", opts)
     end
 })
 
