@@ -1,6 +1,7 @@
 require("aarland.set")
 require("aarland.remap")
 require("aarland.lazy_init")
+require('lualine').setup()
 local augroup = vim.api.nvim_create_augroup
 local aarland_group = augroup('aarland', {})
 local autocmd = vim.api.nvim_create_autocmd
