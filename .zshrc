@@ -34,3 +34,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # fnm
 eval "$(fnm env --use-on-cd)"
+. "$HOME/.cargo/env"
