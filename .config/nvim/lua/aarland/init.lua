@@ -2,6 +2,7 @@ require("aarland.set")
 require("aarland.remap")
 require("aarland.lazy_init")
 require("aarland.lualine_init")
+require("aarland.none_ls_init")
 
 ColorMyPencils("tokyonight")
 
