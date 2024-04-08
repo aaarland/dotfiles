@@ -3,8 +3,11 @@ require("aarland.remap")
 require("aarland.lazy_init")
 require("aarland.lualine_init")
 require("aarland.none_ls_init")
+require("luasnip.loaders.from_vscode").lazy_load()
 
 ColorMyPencils("tokyonight")
+
+local goToSource = require("aarland.go_to_source_definition")
 
 local augroup = vim.api.nvim_create_augroup
 local aarland_group = augroup('aarland', {})
@@ -33,6 +36,7 @@ autocmd('LspAttach', {
 
 
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+        vim.keymap.set("n", "gi", function()  goToSource(vim.fn.winnr() - 1, {fallback = false} ) end, opts)
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
         vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
         vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
