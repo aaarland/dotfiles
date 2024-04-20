@@ -6,7 +6,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
+        -- "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
@@ -22,6 +22,7 @@ return {
             {},
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
+        capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
         require("fidget").setup({})
         require("mason").setup()
