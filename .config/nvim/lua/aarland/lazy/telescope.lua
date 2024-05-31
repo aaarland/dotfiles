@@ -1,7 +1,7 @@
 return {
     "nvim-telescope/telescope.nvim",
 
-    tag = "0.1.5",
+    tag = "0.1.6",
 
     dependencies = {
         "nvim-lua/plenary.nvim"
@@ -22,10 +22,12 @@ return {
             builtin.grep_string({ search = word })
         end)
         vim.keymap.set('n', '<leader>ps', function()
-            builtin.grep_string({ search = vim.fn.input("Grep > ") })
+            builtin.live_grep()
+            -- builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>frr', builtin.lsp_references, {})
         vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
+        vim.keymap.set('n', '<leader>fo', builtin.treesitter, {})
     end
 }
