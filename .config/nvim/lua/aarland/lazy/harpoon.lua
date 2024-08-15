@@ -13,6 +13,6 @@ return {
         vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
         vim.keymap.set("n", "<C-n>", function() harpoon:list():select(2) end)
         vim.keymap.set("n", "<C-m>", function() harpoon:list():select(3) end)
-        vim.keymap.set("n", "<C-l>", function() harpoon:list():select(5) end)
+        vim.keymap.set("n", "<C-j>", function() harpoon:list():select(4) end)
     end
 }
