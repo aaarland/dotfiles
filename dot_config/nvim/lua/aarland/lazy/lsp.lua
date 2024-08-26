@@ -52,6 +52,23 @@ return {
                         }
                     }
                 end,
+                ["volar"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.tsserver.setup({
+                        init_options = {
+                            plugins = {
+                                {
+                                    name = "@vue/typescript-plugin",
+                                    location =
+                                    "/home/aaarland/.local/share/fnm/node-versions/v20.16.0/installation/lib/node_modules/@vue/typescript-plugin/",
+                                    languages = { "vue" },
+                                },
+                            },
+                        },
+                        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+                    })
+                    lspconfig.volar.setup({})
+                end
             }
         })
 
