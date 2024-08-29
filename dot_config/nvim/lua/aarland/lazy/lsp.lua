@@ -91,7 +91,16 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'buffer' },
                 { name = 'luasnip' }, -- For luasnip users.
-            })
+            }),
+            -- sorting = {
+            --     comparators = {
+            --         cmp.config.compare.offset,
+            --         cmp.config.compare.exact,
+            --         cmp.config.compare.score,
+            --         cmp.config.compare.recently_used,
+            --         cmp.config.compare.kind,
+            --     },
+            -- },
         })
 
         vim.diagnostic.config({
