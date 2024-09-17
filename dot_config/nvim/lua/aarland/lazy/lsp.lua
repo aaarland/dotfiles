@@ -30,7 +30,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
-                "tsserver",
+                "ts_ls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -54,7 +54,7 @@ return {
                 end,
                 ["volar"] = function()
                     local lspconfig = require("lspconfig")
-                    lspconfig.tsserver.setup({
+                    lspconfig.ts_ls.setup({
                         init_options = {
                             plugins = {
                                 {

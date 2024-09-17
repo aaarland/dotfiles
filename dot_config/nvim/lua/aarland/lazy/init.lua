@@ -6,5 +6,6 @@ return {
     -- "github/copilot.vim",
     "eandrju/cellular-automaton.nvim",
     "nvim-treesitter/nvim-treesitter-context",
-    "nvimtools/none-ls.nvim"
+    "nvimtools/none-ls.nvim",
+    "ThePrimeagen/vim-be-good"
 }

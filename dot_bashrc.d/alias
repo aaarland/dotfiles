@@ -19,6 +19,7 @@ alias jest-inspect='node --inspect-brk node_modules/.bin/jest --runInBand'
 alias serve-now='python3 -m http.server'
 alias rmn='rm -r node_modules/'
 alias clip='clip.exe'
+alias pf='nvim $(fzf -m --preview="bat --color=always {}")'
 
 # git aliases
 alias gs='git status'
