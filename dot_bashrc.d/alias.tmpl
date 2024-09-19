@@ -1,0 +1,35 @@
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+#user aliases
+alias config='/usr/bin/git --git-dir=/home/aaarland/.dotfiles/ --work-tree=/home/aaarland'
+alias jest-inspect='node --inspect-brk node_modules/.bin/jest --runInBand'
+alias serve-now='python3 -m http.server'
+alias rmn='rm -r node_modules/'
+alias v=nvim
+alias pf='nvim $(fzf -m --preview="bat --color=always {}")'
+
+{{ if eq .chezmoi.os "darwin" }}
+alias clip='pbcopy'
+{{ else if eq .chezmoi.os "linux" }}
+alias clip='clip.exe'
+{{ else }}
+alias clip='clip.exe'
+{{ end }}
+
+
+# git aliases
+alias gs='git status'
+alias gp='git pull -r'
+alias gsp='git stash push && git pull --rebase && git stash pop'
