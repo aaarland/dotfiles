@@ -7,10 +7,10 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
     "modules-center": [
-        "hyprland/window"
     ],
     "modules-right": [
         "mpd",
@@ -18,13 +18,13 @@
         "pulseaudio",
         "bluetooth",
         "network",
-        "power-profiles-daemon",
+        //"power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
         "backlight",
         "keyboard-state",
-        "hyprland/language",
+        //"hyprland/language",
         "battery",
         "battery#bat2",
         "clock",
@@ -32,11 +32,15 @@
         "custom/power"
     ],
     // Modules configuration
+    "hyprland/window": {
+        "max-length": 200,
+        "seperate-outputs": true
+    },
      "hyprland/workspaces": {
          "disable-scroll": true,
          "all-outputs": true,
          "warp-on-scroll": false,
-         "format": "{name}: {icon}",
+         "format": "{name}:{icon} ",
          "format-icons": {
             // "1": "",
             // "2": "",
@@ -100,11 +104,19 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+        "format": "CPU {usage}% ",
+        "states": {
+          "warning": 80,
+          "critical": 90
+        }
     },
     "memory": {
-        "format": "{}% "
+        "format": "{used:0.1f} GB ",
+        "tooltip-format": "{used:0.1f}GB / {total:0.1f}GB",
+        "states": {
+          "warning": 80,
+          "critical": 90
+        }
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -151,7 +163,7 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "󰦗  {bandwidthDownBits} | {bandwidthUpBits} 󰦘 ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
@@ -167,8 +179,8 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -204,7 +216,7 @@
 	    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
 	    "format": " {status}",
 	    "format-disabled": "", // an empty format will hide the module
-	    "format-connected": " {num_connections} connected",
+	    "format-connected": " {num_connections}",
 	    "tooltip-format": "{controller_alias}\t{controller_address}",
 	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
 	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"

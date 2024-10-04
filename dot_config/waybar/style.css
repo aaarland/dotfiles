@@ -1,0 +1,145 @@
+* {
+  font-family: Inter, "CaskaydiaMono Nerd Font Propo";
+  font-size: 15px;
+}
+/*
+  --color-0: #000750;
+  --color-1: #0b0955;
+  --color-2: #16095a;
+  --color-3: #20095f;
+  --color-4: #290964;
+  --color-5: #320868;
+  --color-6: #3a076d;
+  --color-7: #430571;
+  --color-8: #4b0375;
+  --color-9: #540079;
+*/
+
+window#waybar {
+  background-color: transparent;
+  color: #ffffff;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  padding: 20px;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+#workspaces button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.active {
+  background-color: #540079;
+  box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+.module:not(#workspaces) {
+  padding: 0 10px;
+  border-radius: 4px;
+  color: #ffffff;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.warning {
+  animation: blink 0.4s linear infinite alternate;
+}
+
+.critical,
+.disconnected {
+  animation: red-blink 0.4s linear infinite alternate;
+}
+
+/* https://colordesigner.io/gradient-generator/?mode=lch#3633FF-B442FF */
+#custom-power {
+  background-color: #000750;
+}
+#clock {
+  background-color: #0b0955;
+  min-width: 110px;
+}
+
+#temperature {
+  background-color: #16095a;
+}
+
+#memory {
+  background-color: #20095f;
+}
+
+#cpu {
+  background-color: #290964;
+  color: #000000;
+}
+
+#network {
+  background-color: #320868;
+  min-width: 190px;
+}
+
+#bluetooth {
+  background-color: #3a076d;
+}
+
+#pulseaudio {
+  background-color: #430571;
+  color: #000000;
+}
+
+#idle_inhibitor {
+  background-color: #4b0375;
+}
+
+#custom-media {
+  background-color: #b442ff;
+  min-width: 100px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
+
+@keyframes red-blink {
+  to {
+    background-color: #b91c1c;
+    color: #fff;
+  }
+}
+
+@keyframes blink {
+  to {
+    background-color: #eab308;
+    color: #000000;
+  }
+}
