@@ -7,5 +7,6 @@ return {
     "eandrju/cellular-automaton.nvim",
     "nvim-treesitter/nvim-treesitter-context",
     "nvimtools/none-ls.nvim",
-    "ThePrimeagen/vim-be-good"
+    "ThePrimeagen/vim-be-good",
+    "folke/neoconf.nvim"
 }

@@ -12,6 +12,7 @@ return {
         "rafamadriz/friendly-snippets",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "folke/neoconf.nvim",
     },
 
     config = function()
@@ -52,8 +53,15 @@ return {
                         }
                     }
                 end,
-                ["volar"] = function()
+                ["ts_ls"] = function()
                     local lspconfig = require("lspconfig")
+                    local neoconf = require("neoconf")
+                    if not neoconf.get('vue') then
+                        lspconfig.ts_ls.setup {
+                            capabilities = capabilities
+                        }
+                        return
+                    end
                     lspconfig.ts_ls.setup({
                         init_options = {
                             plugins = {
@@ -61,12 +69,15 @@ return {
                                     name = "@vue/typescript-plugin",
                                     location =
                                     "/home/aaarland/.local/share/fnm/node-versions/v20.16.0/installation/lib/node_modules/@vue/typescript-plugin/",
-                                    languages = { "vue" },
+                                    languages = { "javascript", "typescript", "vue" },
                                 },
                             },
                         },
-                        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+                        filetypes = { "typescript", "javascript", "vue", "javascriptreact", "javascript.jsx", "typescriptreact", "typescript.tsx" },
                     })
+                end,
+                ["volar"] = function ()
+                    local lspconfig = require("lspconfig")
                     lspconfig.volar.setup({})
                 end
             }
