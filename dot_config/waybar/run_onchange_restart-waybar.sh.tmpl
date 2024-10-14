@@ -2,6 +2,8 @@
 
 # hash: {{ include "dot_config/waybar/config" | sha256sum }}
 # hash: {{ include "dot_config/waybar/style.css" | sha256sum }}
+{{ if eq .chezmoi.os "linux" }}
 killall waybar
 waybar > /dev/null 2>&1 & disown
 echo "Restarted waybar"
+{{ end }}
