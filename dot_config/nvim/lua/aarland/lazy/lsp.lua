@@ -6,7 +6,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        -- "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
@@ -23,7 +23,7 @@ return {
             {},
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
-        capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+        -- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
         require("fidget").setup({})
         require("mason").setup()
@@ -76,7 +76,7 @@ return {
                         filetypes = { "typescript", "javascript", "vue", "javascriptreact", "javascript.jsx", "typescriptreact", "typescript.tsx" },
                     })
                 end,
-                ["volar"] = function ()
+                ["volar"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.volar.setup({})
                 end
@@ -100,9 +100,18 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
-                { name = 'buffer' },
                 { name = 'luasnip' }, -- For luasnip users.
-            }),
+                entry_filter = function(entry)
+                    if
+                        cmp.config.context.in_treesitter_capture("comment") == true
+                        or cmp.config.context.in_syntax_group("Comment")
+                    then
+                        return true
+                    else
+                        return cmp.types.lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
+                    end
+                end
+            }, { { name = 'buffer' } }),
             -- sorting = {
             --     comparators = {
             --         cmp.config.compare.offset,

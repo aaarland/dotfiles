@@ -1,7 +1,10 @@
 return {
     "f-person/git-blame.nvim",
-    config = function()
-        vim.g.gitblame_message_template = '<author> • <date> • <summary>'
-        vim.g.gitblame_date_format = "%r"
-    end
+    event = "VeryLazy",
+    opts = {
+        enabled = true, -- if you want to enable the plugin
+        message_template = " <author> • <date> • <summary> • <<sha>>",
+        date_format = "%r",
+        virtual_text_column = 80,
+    }
 }
