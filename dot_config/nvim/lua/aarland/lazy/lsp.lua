@@ -101,16 +101,6 @@ return {
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
-                entry_filter = function(entry)
-                    if
-                        cmp.config.context.in_treesitter_capture("comment") == true
-                        or cmp.config.context.in_syntax_group("Comment")
-                    then
-                        return true
-                    else
-                        return cmp.types.lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
-                    end
-                end
             }, { { name = 'buffer' } }),
             -- sorting = {
             --     comparators = {
