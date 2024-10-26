@@ -11,6 +11,7 @@
         "hyprland/window"
     ],
     "modules-center": [
+        "clock"
     ],
     "modules-right": [
         "mpd",
@@ -27,7 +28,6 @@
         //"hyprland/language",
         "battery",
         "battery#bat2",
-        "clock",
         "tray",
         "custom/power"
     ],
@@ -101,6 +101,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M:%S - %A}"
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
@@ -111,10 +112,10 @@
         }
     },
     "memory": {
-        "format": "{used:0.1f} GB ",
+        "format": "{used:0.1f}/{total:0.1f} G ",
         "tooltip-format": "{used:0.1f}GB / {total:0.1f}GB",
         "states": {
-          "warning": 80,
+          "warning": 60,
           "critical": 90
         }
     },
