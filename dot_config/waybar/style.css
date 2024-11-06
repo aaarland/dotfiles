@@ -63,10 +63,14 @@ button:hover {
 .module:not(#workspaces) {
   padding: 0 10px;
   border-radius: 4px;
-  color: #ffffff;
   margin-top: 5px;
   margin-bottom: 5px;
   border-bottom: solid;
+}
+
+.modules-right .module:not(#workspaces) {
+  border-bottom: solid 2px;
+  border-radius: 0;
 }
 
 .warning {
@@ -81,6 +85,7 @@ button:hover {
 /* https://colordesigner.io/gradient-generator/?mode=lch#3633FF-B442FF */
 #custom-power {
   color: #ff0000;
+  border-color: #ff0000;
 }
 
 #clock {
@@ -89,32 +94,44 @@ button:hover {
 
 #temperature {
   border-color: #007500;
+  color: #007500;
 }
 
 #memory {
-  border-color: #263602;
+  border-color: #658034;
+  color: #658034;
 }
 
 #cpu {
   border-color: #9c8003;
+  color: #9c8003;
 }
 
 #network {
-  background-color: #320868;
+  background-image: linear-gradient(
+    45deg,
+    alpha(red, 0.1),
+    alpha(yellow, 0.1),
+    alpha(green, 0.1),
+    alpha(blue, 0.1)
+  );
   min-width: 190px;
+  color: #89faf8;
 }
 
 #bluetooth {
-  border-color: #0000a8;
+  border-color: #4f64ff;
+  color: #4f64ff;
 }
 
 #pulseaudio {
-  background-color: #430571;
-  color: #000000;
+  color: #f645ff;
+  border-color: #f645ff;
 }
 
 #idle_inhibitor {
-  background-color: #4b0375;
+  color: #9433f5;
+  border-color: #9433f5;
 }
 
 #custom-media {
@@ -134,6 +151,7 @@ button:hover {
 @keyframes red-blink {
   to {
     background-color: #b91c1c;
+    border-color: #fff;
     color: #fff;
   }
 }
@@ -141,6 +159,7 @@ button:hover {
 @keyframes blink {
   to {
     background-color: #eab308;
+    border-color: #000000;
     color: #000000;
   }
 }
