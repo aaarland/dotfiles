@@ -23,7 +23,7 @@ return {
             {},
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
-        -- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+        capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
         require("fidget").setup({})
         require("mason").setup()
