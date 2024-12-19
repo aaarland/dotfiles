@@ -1,0 +1,40 @@
+#bash
+
+# Function to check if a command exists, and install it if not
+install_if_missing() {
+    command_name=$1
+    install_command=$2
+    setup_function=$3
+
+    if [ -n "$setup_function" ]; then
+        eval "$setup_function" > /dev/null
+    fi
+    if ! command -v "$command_name" &> /dev/null; then
+        echo "$command_name is not installed. Installing..."
+        # Run the installation command
+        eval "$install_command"
+    fi
+
+    # After installation or if already installed, set up the environment variables
+}
+
+# Generic function to add any application's bin directory to the PATH (for the current session)
+set_env_for_application() {
+    app_name=$1
+    app_bin_dir=$2
+    # Check if the application's bin directory is already in the PATH
+    if ! echo "$PATH" | grep -q "$app_bin_dir"; then
+        export PATH="$app_bin_dir:$PATH"
+    fi
+}
+
+# Example usage:
+
+# Check if cargo is installed, if not install it and set up the PATH for Cargo
+install_if_missing "cargo" "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" \
+"if [ -f '$HOME/.cargo/env' ]; then . '$HOME/.cargo/env'; fi; set_env_for_application 'Cargo' '$HOME/.cargo/bin'"
+install_if_missing "fnm" "cargo install fnm" "$(fnm env --use-on-cd --shell bash)"
+install_if_missing "bat" "cargo install bat"
+install_if_missing "rg" "cargo install ripgrep"
+
+install_if_missing "oh-my-posh" "curl -s https://ohmyposh.dev/install.sh | bash -s" "$(oh-my-posh init bash)"
