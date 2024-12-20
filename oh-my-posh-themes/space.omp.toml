@@ -100,10 +100,10 @@ type = "status"
 style = "plain"
 template = "{{if .Error }}󰋔{{ else }}{{ end }}"
 foreground = "#66ff66"
+foreground_templates = ["{{ if .Error }}#e91e63{{ end }}"]
 [blocks.segments.properties]
 cache_duration = "none"
 always_enabled = true
-foreground_templates = ["{{ if .Error }}#e91e63{{ end }}"]
 
 [[blocks.segments]]
 type = "text"
