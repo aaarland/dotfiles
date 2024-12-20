@@ -37,4 +37,4 @@ install_if_missing "fnm" "cargo install fnm" "$(fnm env --use-on-cd --shell bash
 install_if_missing "bat" "cargo install bat"
 install_if_missing "rg" "cargo install ripgrep"
 install_if_missing "delta" "cargo install git-delta"
-install_if_missing "oh-my-posh" "curl -s https://ohmyposh.dev/install.sh | bash -s" "$(oh-my-posh init bash --config ~/oh-my-posh-themes/space.omp.json)"
+install_if_missing "oh-my-posh" "curl -s https://ohmyposh.dev/install.sh | bash -s" "$(oh-my-posh init bash --config ~/oh-my-posh-themes/space.omp.toml)"
