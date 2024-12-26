@@ -1,7 +1,6 @@
 require("aarland.set")
 require("aarland.remap")
 require("aarland.lazy_init")
-require("aarland.lualine_init")
 require("aarland.none_ls_init")
 require("luasnip.loaders.from_vscode").lazy_load()
 
