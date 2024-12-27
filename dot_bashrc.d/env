@@ -1,2 +1,3 @@
 export EDITOR=nvim
 export GOPATH=$HOME/go
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
