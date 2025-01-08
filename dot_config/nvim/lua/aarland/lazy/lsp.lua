@@ -25,15 +25,27 @@ return {
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
+            automatic_installation = false,
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
                 "ts_ls",
             },
             handlers = {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
+
+                ["eslint"] = function()
+                    local neoconf = require("neoconf")
+                    local validate = "on"
+                    if neoconf.get('eslint') == false then
+                        validate = "off"
+                    end
+                    require("lspconfig").eslint.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            format = false,
+                            run = "onSave",
+                            validate = validate
+                        }
                     }
                 end,
 
@@ -76,7 +88,12 @@ return {
                 ["volar"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.volar.setup({})
-                end
+                end,
+                function(server_name) -- default handler (optional)
+                    require("lspconfig")[server_name].setup {
+                        capabilities = capabilities
+                    }
+                end,
             }
         })
 
