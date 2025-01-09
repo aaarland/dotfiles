@@ -56,7 +56,7 @@ return {
                         settings = {
                             Lua = {
                                 diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
+                                    globals = { "vim", "it", "describe", "before_each", "after_each", "require" },
                                 }
                             }
                         }
@@ -103,7 +103,7 @@ return {
                 focusable = false,
                 style = "minimal",
                 border = "rounded",
-                source = "always",
+                source = true,
                 header = "",
                 prefix = "",
             },

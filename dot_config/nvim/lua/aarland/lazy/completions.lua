@@ -25,6 +25,13 @@ return {
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
-        signature = { enabled = true }
+        completion = {
+            menu = { border = 'rounded' },
+            documentation = { window = { border = 'rounded' } }
+        },
+        signature = {
+            window = { border = 'rounded' },
+            enabled = true
+        }
     },
 }
