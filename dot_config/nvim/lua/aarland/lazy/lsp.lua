@@ -21,6 +21,7 @@ return {
 
     config = function()
         local capabilities = require("blink.cmp").get_lsp_capabilities();
+        local neoconf = require("neoconf")
 
         require("fidget").setup({})
         require("mason").setup()
@@ -34,7 +35,6 @@ return {
             handlers = {
 
                 ["eslint"] = function()
-                    local neoconf = require("neoconf")
                     local validate = "on"
                     if neoconf.get('eslint') == false then
                         validate = "off"
@@ -64,7 +64,6 @@ return {
                 end,
                 ["ts_ls"] = function()
                     local lspconfig = require("lspconfig")
-                    local neoconf = require("neoconf")
                     if not neoconf.get('vue') then
                         lspconfig.ts_ls.setup {
                             capabilities = capabilities
@@ -97,6 +96,11 @@ return {
             }
         })
 
+        vim.lsp.config('*', {
+            flags = {
+                debounce = neoconf.get("lsp_debounce") or 150
+            }
+        })
         vim.diagnostic.config({
             -- update_in_insert = true,
             float = {
