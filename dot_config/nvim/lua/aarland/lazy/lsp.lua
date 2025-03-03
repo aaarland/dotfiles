@@ -40,7 +40,6 @@ return {
                         validate = "off"
                     end
                     require("lspconfig").eslint.setup {
-                        capabilities = capabilities,
                         settings = {
                             format = false,
                             run = "onSave",
@@ -98,7 +97,7 @@ return {
 
         vim.lsp.config('*', {
             flags = {
-                debounce = neoconf.get("lsp_debounce") or 150
+                debounce_text_changes = neoconf.get("lsp_debounce") or 150
             }
         })
         vim.diagnostic.config({
