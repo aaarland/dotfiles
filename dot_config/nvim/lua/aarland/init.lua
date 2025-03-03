@@ -30,6 +30,15 @@ autocmd({ "BufWritePre" }, {
     command = [[%s/\s\+$//e]],
 })
 
+autocmd({ 'BufWritePre'}, {
+    group = aarland_group,
+    pattern = '*',
+    callback = function(e)
+        vim.lsp.buf.format()
+    end
+}
+)
+
 autocmd('LspAttach', {
     group = aarland_group,
     callback = function(e)
