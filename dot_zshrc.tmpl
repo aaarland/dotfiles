@@ -43,7 +43,7 @@ eval "$(fnm env --use-on-cd)"
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
     for rc in ~/.bashrc.d/*; do
-        if [ -f "$rc" ]; then
+        if [ -f "$rc" ] && [[ "$rc" != *\.zwc ]]; then
             . "$rc"
         fi
     done
