@@ -33,7 +33,7 @@ set_env_for_application() {
 # Check if cargo is installed, if not install it and set up the PATH for Cargo
 install_if_missing "cargo" "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" \
 "if [ -f '$HOME/.cargo/env' ]; then . '$HOME/.cargo/env'; fi; set_env_for_application 'Cargo' '$HOME/.cargo/bin'"
-install_if_missing "fnm" "cargo install fnm" "$(fnm env --use-on-cd --shell bash)"
+install_if_missing "fnm" "cargo install fnm" "$(fnm env --shell bash)"
 install_if_missing "bat" "cargo install bat"
 install_if_missing "rg" "cargo install ripgrep"
 install_if_missing "delta" "cargo install git-delta"
