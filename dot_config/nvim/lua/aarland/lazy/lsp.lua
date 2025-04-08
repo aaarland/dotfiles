@@ -33,13 +33,13 @@ return {
                 "ts_ls",
             },
             handlers = {
-
                 ["eslint"] = function()
                     local validate = "on"
                     if neoconf.get('eslint') == false then
                         validate = "off"
                     end
                     require("lspconfig").eslint.setup {
+                        capabilities = capabilities,
                         settings = {
                             format = false,
                             run = "onSave",

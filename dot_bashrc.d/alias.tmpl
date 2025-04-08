@@ -23,9 +23,11 @@ alias pf='nvim $(fzf -m --preview="bat --color=always {}")'
 {{ if eq .chezmoi.os "darwin" }}
 alias clip='pbcopy'
 {{ else if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 alias clip='clip.exe'
 {{ else }}
-alias clip='clip.exe'
+alias clip='wl-copy'
+{{ end }}
 {{ end }}
 
 
