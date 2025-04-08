@@ -4,7 +4,7 @@ return {
         'rafamadriz/friendly-snippets',
         { 'L3MON4D3/LuaSnip', version = 'v2.*' }
     },
-    version = 'v0.*',
+    version = '1.*',
     opts = {
         keymap = { preset = 'default' },
         appearance = {
