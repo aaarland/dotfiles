@@ -4,7 +4,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "saghen/blink.cmp",
-        "j-hui/fidget.nvim",
+        -- "j-hui/fidget.nvim",
         "folke/neoconf.nvim",
         {
             "folke/lazydev.nvim",
@@ -23,7 +23,7 @@ return {
         local capabilities = require("blink.cmp").get_lsp_capabilities();
         local neoconf = require("neoconf")
 
-        require("fidget").setup({})
+        -- require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
             automatic_installation = false,
