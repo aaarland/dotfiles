@@ -5,7 +5,6 @@ return {
         local branch_max_width = 40
         local branch_min_width = 10
         local noice = require('noice')
-        print(noice.api.statusline.mode.get)
         local config = {
             options = {
                 theme = "tokyonight",
@@ -41,7 +40,7 @@ return {
                     {
                         "filename",
                         file_status = false,
-                        path = 1,
+                        path = 0,
                     },
                     {
                         "diagnostics",
