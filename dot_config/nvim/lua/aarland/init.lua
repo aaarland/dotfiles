@@ -6,7 +6,6 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 
 ColorMyPencils("tokyonight")
-local goToSource = require("aarland.go_to_source_definition")
 --require("aarland.make_files")
 
 local augroup = vim.api.nvim_create_augroup
