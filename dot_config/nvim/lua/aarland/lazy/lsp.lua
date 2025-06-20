@@ -20,95 +20,19 @@ return {
     },
 
     config = function()
-        local capabilities = require("blink.cmp").get_lsp_capabilities();
-        local neoconf = require("neoconf")
-
         -- require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
+            automatic_enable = {
+                exclude = {
+                    "eslint"
+                }
+            },
             automatic_installation = false,
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
                 "ts_ls",
-            },
-            handlers = {
-                ["eslint"] = function()
-                    local validate = "on"
-                    if neoconf.get('eslint') == false then
-                        validate = "off"
-                    end
-                    require("lspconfig").eslint.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            format = false,
-                            run = "onSave",
-                            validate = validate
-                        }
-                    }
-                end,
-
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each", "require" },
-                                }
-                            }
-                        }
-                    }
-                end,
-                ["ts_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    if not neoconf.get('vue') then
-                        lspconfig.ts_ls.setup {
-                            capabilities = capabilities
-                        }
-                        return
-                    end
-                    lspconfig.ts_ls.setup({
-                        init_options = {
-                            plugins = {
-                                {
-                                    name = "@vue/typescript-plugin",
-                                    location =
-                                    "/home/aaarland/.local/share/fnm/node-versions/v20.16.0/installation/lib/node_modules/@vue/typescript-plugin/",
-                                    languages = { "javascript", "typescript", "vue" },
-                                },
-                            },
-                        },
-                        filetypes = { "typescript", "javascript", "vue", "javascriptreact", "javascript.jsx", "typescriptreact", "typescript.tsx" },
-                    })
-                end,
-                ["volar"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.volar.setup({})
-                end,
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
-                end,
-            }
-        })
-
-        vim.lsp.config('*', {
-            flags = {
-                debounce_text_changes = neoconf.get("lsp_debounce") or 150
-            }
-        })
-        vim.diagnostic.config({
-            -- update_in_insert = true,
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = true,
-                header = "",
-                prefix = "",
             },
         })
     end
