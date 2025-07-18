@@ -4,7 +4,6 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "saghen/blink.cmp",
-        -- "j-hui/fidget.nvim",
         "folke/neoconf.nvim",
         {
             "folke/lazydev.nvim",
