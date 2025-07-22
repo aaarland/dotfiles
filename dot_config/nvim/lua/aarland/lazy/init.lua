@@ -7,5 +7,6 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     "nvimtools/none-ls.nvim",
     "ThePrimeagen/vim-be-good",
-    "jeffkreeftmeijer/vim-numbertoggle"
+    "jeffkreeftmeijer/vim-numbertoggle",
+    "mfussenegger/nvim-lint"
 }
