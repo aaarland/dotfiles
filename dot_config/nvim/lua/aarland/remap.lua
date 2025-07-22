@@ -33,6 +33,12 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+--
+vim.keymap.set("n", "<leader>cs", function()
+    local spellEnabled = vim.wo.spell
+    local cmd = string.format("setlocal %s spelllang=en_us", spellEnabled and "nospell" or "spell")
+    vim.cmd(cmd);
+end)
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
