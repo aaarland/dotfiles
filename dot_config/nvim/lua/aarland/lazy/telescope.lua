@@ -24,6 +24,7 @@ return {
         vim.keymap.set('n', '<leader>ps', require("aarland.config.multigrep").live_multigrep)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>frr', builtin.lsp_references, {})
+        vim.keymap.set('n', '<leader>fds', builtin.lsp_document_symbols, {})
         vim.keymap.set('n', '<leader>pb', function()
             builtin.buffers { attach_mappings = function(_, map)
                 map({ "i", "n" }, "<M-d>", require("telescope.actions").delete_buffer)
