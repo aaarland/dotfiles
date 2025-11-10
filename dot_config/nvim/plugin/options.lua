@@ -14,9 +14,8 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-{{ if ne .chezmoi.os "windows" }}
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-{{ end }}
+local home = vim.loop.os_uname().sysname == "Windows_NT" and os.getenv("USERPROFILE") or os.getenv("HOME")
+vim.opt.undodir = home .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -34,3 +33,5 @@ vim.opt.colorcolumn = "120"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+vim.opt.inccommand = "split"

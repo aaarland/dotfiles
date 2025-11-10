@@ -20,6 +20,11 @@ return {
 
     config = function()
         -- require("fidget").setup({})
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
+        local neoconf = require("neoconf")
+        vim.lsp.config('*', {
+            capabilities = capabilities
+        })
         require("mason").setup()
         require("mason-lspconfig").setup({
             automatic_enable = {
@@ -34,5 +39,20 @@ return {
                 "ts_ls",
             },
         })
+
+        vim.lsp.enable('eslint', neoconf.get('eslint') ~= false and not neoconf.get('eslint_d'))
+
+        vim.diagnostic.config({
+            -- update_in_insert = true,
+            float = {
+                focusable = false,
+                style = "minimal",
+                border = "rounded",
+                source = true,
+                header = "",
+                prefix = "",
+            },
+        })
+        require("aarland.lint")
     end
 }

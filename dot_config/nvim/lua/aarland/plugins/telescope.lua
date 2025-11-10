@@ -11,6 +11,7 @@ return {
         require('telescope').setup({})
 
         local builtin = require('telescope.builtin')
+        local multigrep = require("aarland.telescope.multigrep");
         vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
         vim.keymap.set('n', '<C-p>', builtin.git_files, {})
         vim.keymap.set('n', '<leader>pws', function()
@@ -21,7 +22,7 @@ return {
             local word = vim.fn.expand("<cWORD>")
             builtin.grep_string({ search = word })
         end)
-        vim.keymap.set('n', '<leader>ps', require("aarland.config.multigrep").live_multigrep)
+        vim.keymap.set('n', '<leader>ps', multigrep, {})
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
         vim.keymap.set('n', '<leader>frr', builtin.lsp_references, {})
         vim.keymap.set('n', '<leader>fds', builtin.lsp_document_symbols, {})

@@ -12,6 +12,10 @@ vim.lsp.config('eslint', {
     }
 });
 
+vim.lsp.config('bright_script', {
+    filetypes = { 'brs', 'brightscript' }
+})
+
 vim.lsp.config('lua_ls', {
     settings = {
         Lua = {
@@ -38,23 +42,6 @@ if neoconf.get('vue') then
     })
 end
 
-if neoconf.get('eslint_d') then
-    local lint = require("lint")
-
-    lint.linters_by_ft = {
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
-        vue = { "eslint_d" },
-    }
-    vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
-        callback = function()
-            require("lint").try_lint()
-        end,
-    })
-end
-
 vim.lsp.enable('eslint', neoconf.get('eslint') ~= false and not neoconf.get('eslint_d'))
 vim.diagnostic.config({
     -- update_in_insert = true,
@@ -67,3 +54,16 @@ vim.diagnostic.config({
         prefix = "",
     },
 })
+
+vim.lsp.config('intelephense', {
+        settings = {
+        intelephense = {
+            environment = {
+                includePaths = {
+                    "/home/adrian/code/phpApi/moxie-global/",
+                    "/home/adrian/code/phpApi/api/"
+                }
+            }
+        }
+    }
+});

@@ -3,9 +3,8 @@ local finders = require "telescope.finders"
 local make_entry = require "telescope.make_entry"
 local conf = require "telescope.config".values
 
-local M = {}
 
-M.live_multigrep = function(opts)
+return function(opts)
     opts = opts or {}
     opts.cwd = opts.cwd or vim.uv.cwd()
     local finder = finders.new_async_job {
@@ -40,5 +39,3 @@ M.live_multigrep = function(opts)
         sorter = require "telescope.sorters".empty()
     }):find()
 end
-
-return M
