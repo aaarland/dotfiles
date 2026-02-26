@@ -22,11 +22,14 @@ alias pf='nvim $(fzf -m --preview="bat --color=always {}")'
 
 {{ if eq .chezmoi.os "darwin" }}
 alias clip='pbcopy'
+alias paste='pbpaste'
 {{ else if eq .chezmoi.os "linux" }}
 {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 alias clip='clip.exe'
+alias paste='powershell.exe -noprofile -command Get-Clipboard'
 {{ else }}
 alias clip='wl-copy'
+alias clip='wl-paste'
 {{ end }}
 {{ end }}
 
