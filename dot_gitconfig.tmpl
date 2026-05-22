@@ -6,6 +6,7 @@
     stash-all = stash save --include-untracked
     undo = reset --soft HEAD^
     graph = log --graph --all --date=iso --pretty=format:'%Cred%h%Creset %ad | [%C(bold blue)%an%Creset] %Cgreen%d%Creset %s'
+    diff-sbs = -c delta.features=side-by-side diff
 [core]
 	editor = nvim
     pager = delta
@@ -14,6 +15,8 @@
 	autoSetupRemote = true
 [rebase]
     autoStash = true
+[merge]
+    conflictStyle = zdiff3
 [interactive]
     diffFilter = delta --color-only --features=interactive
 [delta]

@@ -19,6 +19,7 @@ alias serve-now='python3 -m http.server'
 alias rmn='rm -r node_modules/'
 alias v=nvim
 alias pf='nvim $(fzf -m --preview="bat --color=always {}")'
+alias fd=fdfind
 
 {{ if eq .chezmoi.os "darwin" }}
 alias clip='pbcopy'
@@ -29,7 +30,7 @@ alias clip='clip.exe'
 alias paste='powershell.exe -noprofile -command Get-Clipboard'
 {{ else }}
 alias clip='wl-copy'
-alias clip='wl-paste'
+alias paste='wl-paste'
 {{ end }}
 {{ end }}
 
