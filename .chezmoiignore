@@ -1,0 +1,5 @@
+# Noctalia shell config only exists on the hyprland desktop
+{{- if ne .chezmoi.hostname "linux-beast" }}
+.config/noctalia
+.config/noctalia/**
+{{- end }}
