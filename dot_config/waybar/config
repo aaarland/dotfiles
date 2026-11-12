@@ -15,6 +15,7 @@
         ],
         "modules-right": [
             "mpd",
+        "custom/screen-switcher",
         "idle_inhibitor",
         "pulseaudio",
         "bluetooth",
@@ -242,5 +243,11 @@
             "on-click": "swaync-client -t -sw",
             "on-click-right": "swaync-client -d -sw",
             "escape": true
+        },
+        "custom/screen-switcher": {
+            "tooltip": false,
+            "format": "󰍹",
+            "on-click": "$HOME/.config/waybar/disable_second_monitor.sh 2> /dev/null" // Script in resources folder
+
         }
 }
