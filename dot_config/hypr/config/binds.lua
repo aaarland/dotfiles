@@ -177,3 +177,6 @@ hl.bind(mainMod .. " + CONTROL + mouse_down", hl.dsp.focus({ workspace = "m+1" }
 -- Special workspace (scratchpad)
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special" }))
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special())
+
+-- Monitor layouts: cycle stacked dual -> Acer only -> Samsung only
+hl.bind(mainMod .. " + CONTROL + M", hl.dsp.exec_cmd("monitor-layout next"))

@@ -1,0 +1,66 @@
+#!/bin/bash
+# monitor-layout — cycle or set Hyprland monitor layouts on linux-beast
+# usage: monitor-layout [next|both|top|bottom|status]   (default: next)
+#
+# layouts:
+#   both   stacked dual: Acer on top @120, Samsung below @180
+#   top    Acer only (Samsung off)
+#   bottom Samsung only (Acer off)
+# HDMI-A-1 is handled separately by toggle-hdmi.sh
+#
+# hyprland 0.57: "hyprctl keyword monitor" no longer exists; layout changes
+# go through hyprctl eval with the Lua config API (disabled= is a field of
+# its own, NOT a mode value).
+
+set -euo pipefail
+
+TOP_OUT="DP-1";    TOP_MODE="2560x1440@120"
+BOT_OUT="DP-2";    BOT_MODE="2560x1440@179.95"
+
+notify() { noctalia msg notification-show "Monitors" "$1" 2>/dev/null || true; }
+
+monitor_json=$(hyprctl monitors all -j)
+is_disabled() { jq -r --arg n "$1" '.[] | select(.name==$n) | .disabled' <<<"$monitor_json"; }
+exists()      { jq -e --arg n "$1" 'any(.[]; .name==$n)' >/dev/null <<<"$monitor_json"; }
+
+mon_on()  { hyprctl --quiet eval "hl.monitor({ output = \"$1\", disabled = false, mode = \"$2\", position = \"$3\", scale = \"1\" })"; }
+mon_off() { hyprctl --quiet eval "hl.monitor({ output = \"$1\", disabled = true })"; }
+
+apply_both() {
+    mon_on "$TOP_OUT" "$TOP_MODE" "0x0"
+    mon_on "$BOT_OUT" "$BOT_MODE" "0x1440"
+    notify "Stacked dual"
+}
+apply_top() {
+    mon_on "$TOP_OUT" "$TOP_MODE" "0x0"
+    exists "$BOT_OUT" && mon_off "$BOT_OUT"
+    notify "Acer only"
+}
+apply_bottom() {
+    exists "$BOT_OUT" || { notify "No $BOT_OUT connected"; exit 1; }
+    mon_on "$BOT_OUT" "$BOT_MODE" "0x0"
+    mon_off "$TOP_OUT"
+    notify "Samsung only"
+}
+
+exists "$TOP_OUT" || { notify "No displays found"; exit 1; }
+
+top=$(is_disabled "$TOP_OUT"); bot=$(is_disabled "$BOT_OUT")
+
+case "${1:-next}" in
+    status)
+        if [[ $top == false && $bot == false ]]; then echo both
+        elif [[ $top == false ]]; then echo top
+        elif [[ $bot == false ]]; then echo bottom
+        else echo none; fi ;;
+    both)   apply_both ;;
+    top)    apply_top ;;
+    bottom) apply_bottom ;;
+    next)
+        if   [[ $top == false && $bot == false ]]; then apply_top
+        elif [[ $top == false ]]; then apply_bottom
+        elif [[ $bot == false ]]; then apply_both
+        else apply_both   # everything off -> back to dual
+        fi ;;
+    *) echo "usage: monitor-layout [next|both|top|bottom|status]"; exit 1 ;;
+esac

@@ -6,5 +6,5 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("noctalia")
     hl.exec_cmd("xhost +SI:localuser:root")
     -- keep HDMI off by default, like the old conf's "monitor=HDMI-A-1,disabled"
-    hl.exec_cmd("hyprctl keyword monitor HDMI-A-1,disabled")
+    pcall(function() hl.monitor({ output = "HDMI-A-1", disabled = true }) end)
 end)
