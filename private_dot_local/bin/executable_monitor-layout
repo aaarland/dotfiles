@@ -17,7 +17,7 @@ set -euo pipefail
 TOP_OUT="DP-1";    TOP_MODE="2560x1440@120"
 BOT_OUT="DP-2";    BOT_MODE="2560x1440@179.95"
 
-notify() { noctalia msg notification-show "Monitors" "$1" 2>/dev/null || true; }
+notify() { noctalia msg notification-show "Monitors" "$1" >/dev/null 2>&1 || true; }
 
 monitor_json=$(hyprctl monitors all -j)
 is_disabled() { jq -r --arg n "$1" '.[] | select(.name==$n) | .disabled' <<<"$monitor_json"; }
