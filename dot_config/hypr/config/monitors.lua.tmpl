@@ -4,8 +4,9 @@
 
 -- Dual 1440p, stacked: DP-1 (120Hz) on top, DP-2 (180Hz) below
 hl.monitor({ output = "DP-1",     mode = "2560x1440@120", position = "0x0",    scale = "1" })
-hl.monitor({ output = "DP-2",     mode = "preferred",     position = "0x1440", scale = "1" })
-hl.monitor({ output = "HDMI-A-1", mode = "disabled" })
+hl.monitor({ output = "DP-2",     mode = "2560x1440@179.95", position = "0x1440", scale = "1" })
+-- HDMI-A-1: no Lua equivalent of the old "monitor=...,disabled" — if it's connected,
+-- toggle-hdmi.sh manages it, and it will auto-join until toggled.
 {{- else }}
 
 hl.monitor({
