@@ -40,7 +40,10 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 if command -v fnm >/dev/null; then
     eval "$(fnm env --use-on-cd)"
 fi
-. "$HOME/.cargo/env"
+[ -s "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
