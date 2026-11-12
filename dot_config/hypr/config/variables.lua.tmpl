@@ -1,0 +1,22 @@
+-- Hyprland default apps
+
+TERMINAL     = "alacritty"
+FILE_MANAGER = "dolphin"
+BROWSER      = "firefox"
+EDITOR       = "alacritty -e nvim"
+CALCULATOR   = "gnome-calculator"
+
+-- Monitors
+{{- if eq .chezmoi.hostname "linux-beast" }}
+MONITOR1 = "DP-1"
+MONITOR2 = "DP-2"
+MONITOR3 = ""
+{{- else }}
+MONITOR1 = ""
+MONITOR2 = ""
+MONITOR3 = ""
+{{- end }}
+PRIMARY_MONITOR = MONITOR1
+
+-- Workspaces
+NUM_WPM = 3 -- Number of workspaces per monitor (Max 10)

@@ -1,0 +1,9 @@
+.config/hypr/hyprland.conf
+.config/hypr/hyprlock.conf
+.config/hypr/hyprpaper.conf
+.config/waybar
+.config/waybar/**
+.config/i3
+.config/i3/**
+.bashrc.d/applications
+README.md

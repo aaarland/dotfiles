@@ -15,13 +15,11 @@ plugins=(
     {{- if eq .chezmoi.os "darwin" }}
 	zsh-autosuggestions
     {{- end }}
-    dnf
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # aliases
-alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias ls="lsd"
 alias serve-now="python3 -m http.server 9000"
 
@@ -31,9 +29,6 @@ alias serve-now="python3 -m http.server 9000"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# bun completions
-[ -s "/Users/adrianaarland/.bun/_bun" ] && source "/Users/adrianaarland/.bun/_bun"
 
 
 # fnm
