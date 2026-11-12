@@ -101,11 +101,11 @@ hide_when_no_media = true
 title_scroll = "on_hover"
 
 [widget.monitors]
-command = "monitor-layout next"
+command = "{{ .chezmoi.homeDir }}/.local/bin/monitor-layout next"
 glyph = "monitor"
-middle_command = "toggle-hdmi.sh"
+middle_command = "{{ .chezmoi.homeDir }}/.local/bin/toggle-hdmi.sh"
 right_command = "noctalia msg panel-toggle control-center"
-scroll_up_command = "monitor-layout both"
+scroll_up_command = "{{ .chezmoi.homeDir }}/.local/bin/monitor-layout both"
 tooltip = "Monitor layout — click: cycle · middle: HDMI · scroll up: dual · right: display settings"
 type = "custom_button"
 
