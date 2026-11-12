@@ -27,19 +27,20 @@ mon_on()  { hyprctl --quiet eval "hl.monitor({ output = \"$1\", disabled = false
 mon_off() { hyprctl --quiet eval "hl.monitor({ output = \"$1\", disabled = true })"; }
 
 apply_both() {
-    mon_on "$TOP_OUT" "$TOP_MODE" "0x0"
+    # move/enable DP-2's slot first so enabling DP-1 at 0x0 never overlaps
     mon_on "$BOT_OUT" "$BOT_MODE" "0x1440"
+    mon_on "$TOP_OUT" "$TOP_MODE" "0x0"
     notify "Stacked dual"
 }
 apply_top() {
+    if exists "$BOT_OUT"; then mon_off "$BOT_OUT"; fi
     mon_on "$TOP_OUT" "$TOP_MODE" "0x0"
-    exists "$BOT_OUT" && mon_off "$BOT_OUT"
     notify "Acer only"
 }
 apply_bottom() {
     exists "$BOT_OUT" || { notify "No $BOT_OUT connected"; exit 1; }
-    mon_on "$BOT_OUT" "$BOT_MODE" "0x0"
     mon_off "$TOP_OUT"
+    mon_on "$BOT_OUT" "$BOT_MODE" "0x0"
     notify "Samsung only"
 }
 
