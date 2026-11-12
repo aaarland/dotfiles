@@ -37,7 +37,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 
 # fnm
-eval "$(fnm env --use-on-cd)"
+if command -v fnm >/dev/null; then
+    eval "$(fnm env --use-on-cd)"
+fi
 . "$HOME/.cargo/env"
 
 # User specific aliases and functions
