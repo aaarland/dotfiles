@@ -1,0 +1,12 @@
+# chezmoi config — rendered by `chezmoi init` on each machine.
+# promptStringOnce asks for the email only the first time and caches it here.
+{{ $email := promptStringOnce . "email" "Git email for this machine" }}
+
+[diff]
+    pager = "delta"
+[merge]
+    command = "nvim"
+    args = ["-d", {{ `"{{ .Destination }}"` }}, {{ `"{{ .Source }}"` }}, {{ `"{{ .Target }}"` }}]
+
+[data]
+    email = {{ $email | quote }}
